@@ -20,6 +20,7 @@ services:
       - REDIS_PORT=6379
     volumes:
       - .:/app # mount the current directory to /app in the container
+      - /app/node_modules # prevent the node_modules directory from being overridden
     depends_on:
       - postgres-db
       - redis

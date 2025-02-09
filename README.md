@@ -13,11 +13,13 @@ A NestJS-based Voucher Pool API that manages customer vouchers and special offer
 
 ## Installation
 
-1. Clone the repository
+1. Clone the repository and install dependencies:
 
 ```bash
 git clone  https://github.com/Ahmedkholaif/simple-nestjs.git
 cd simple-nestjs
+
+npm install
 ```
 
 ## Running the Application
@@ -27,12 +29,8 @@ cd simple-nestjs
 
 
 # Local Development
-2. Install dependencies:
-```bash
-npm install 
-```
 
-3. Configure environment variables in `.env` if you are running locally: 
+- Configure environment variables in `.env` if you are running locally: 
 ```env
  PORT=
  POSTGRES_HOST=
