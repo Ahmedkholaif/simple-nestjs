@@ -96,7 +96,7 @@ This interface includes endpoints for:
 - `POST /api/vouchers` - Generate a new voucher code
 - `GET /api/vouchers` - Get all vouchers, or use query parameters to filter by customer email 'email' or special offer ID 'offerId' 
 - `POST /api/vouchers/redeem` - Redeem a voucher code
-- `POST /api/get-by-email` - Get all vouchers for a specific customer by email
+- `POST /api/vouchers/get-by-email` - Get all vouchers for a specific customer by email
 
 ## Testing
 
