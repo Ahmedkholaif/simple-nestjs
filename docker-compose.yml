@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  voucher-pool:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # external:internal
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - POSTGRES_HOST=postgres-db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=voucher_pool
+      - POSTGRES_PASSWORD=voucher_pool
+      - POSTGRES_DB=voucher_pool
+      - SYNC_DB=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - .:/app # mount the current directory to /app in the container
+    depends_on:
+      - postgres-db
+      - redis
+    networks:
+      - voucher-pool
+
+  postgres-db:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=voucher_pool
+      - POSTGRES_PASSWORD=voucher_pool
+      - POSTGRES_DB=voucher_pool
+    ports:
+      - "5433:5432"
+    networks:
+      - voucher-pool
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - voucher-pool
+networks:
+  voucher-pool:
+    driver: bridge
+volumes:
+  db-data:
